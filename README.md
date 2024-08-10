@@ -1,3 +1,5 @@
+The original seems dead, and is not accepting PRs. Creating a new NPM package, @hena/expo-unlimited-secure-store, because I need it.
+
 # expo-unlimited-secure-store
 
 Key-Value based secured storage engine for applications built with [Expo](https://expo.io), which can be also used as the storage for [redux-persist](https://github.com/rt2zz/redux-persist).
@@ -11,7 +13,7 @@ Main reason for creating this module is that Expo's SecureStore will have limita
 ## Installation
 
 ```bash
-npm i @neverdull-agency/expo-unlimited-secure-store
+npm i @hena/expo-unlimited-secure-store
 ```
 
 It has two peer dependencies mentioned above (SecureStore & FileSystem) which you will have to install manually to your project if you haven't did already:
@@ -28,7 +30,7 @@ expo install expo-file-system
 If you have some data that you want to store securely and read/delete it any time later:
 
 ```js
-import createSecureStore from '@neverdull-agency/expo-unlimited-secure-store';
+import createSecureStore from '@hena/expo-unlimited-secure-store';
 
 const secureStore = createSecureStore();
 
@@ -36,18 +38,18 @@ const secureStore = createSecureStore();
 
 // Saving Data
 secureStore.setItem(key, value).then(() => {
-	console.log('saved successfully');
+  console.log('saved successfully');
 });
 
 // Retrieving Data
 secureStore.getItem(key).then((value) => {
-	console.log('retrieved successfully');
-	// Do what you need with the returned value
+  console.log('retrieved successfully');
+  // Do what you need with the returned value
 });
 
 // Deleting Data
 secureStore.removeItem(key).then(() => {
-	console.log('removed successfully');
+  console.log('removed successfully');
 });
 ```
 
@@ -56,7 +58,7 @@ secureStore.removeItem(key).then(() => {
 If you are using redux, and redux-persist you can use this as the storage engine in the following way
 
 ```js
-import createSecureStore from '@neverdull-agency/expo-unlimited-secure-store';
+import createSecureStore from '@hena/expo-unlimited-secure-store';
 
 import { createStore } from 'redux';
 import { persistStore, persistCombineReducers } from 'redux-persist';
@@ -82,14 +84,14 @@ export { store, persistor };
 
 Function that will create the secure store with options, which can have four values: two for Expo's [SecureStore](https://docs.expo.io/versions/latest/sdk/securestore/) and two for this module.
 
-*You will only have to provide these options when creating the secure store, later if you want to save/get/remove data you will have to call the corresponding functions only.*
+_You will only have to provide these options when creating the secure store, later if you want to save/get/remove data you will have to call the corresponding functions only._
 
 #### Options for SecureStore:
 
 - `keychainService : string`
- 
+
 > iOS: The item's service, equivalent to `kSecAttrService`
- 
+
 > Android: Equivalent of the public/private key pair Alias
 
 > **NOTE** If the item is set with the keychainService option, it will be required to later fetch the value.
@@ -106,35 +108,35 @@ Function that will create the secure store with options, which can have four val
 
 > `SecureStore.WHEN_UNLOCKED_THIS_DEVICE_ONLY`: Similar to WHEN_UNLOCKED, except the entry is not migrated to a new device when restoring from a backup.
 
-> `SecureStore.WHEN_PASSCODE_SET_THIS_DEVICE_ONLY`: Similar to WHEN\_UNLOCKED\_THIS\_DEVICE\_ONLY, except the user must have set a passcode in order to store an entry. If the user removes their passcode, the entry will be deleted.
+> `SecureStore.WHEN_PASSCODE_SET_THIS_DEVICE_ONLY`: Similar to WHEN_UNLOCKED_THIS_DEVICE_ONLY, except the user must have set a passcode in order to store an entry. If the user removes their passcode, the entry will be deleted.
 
-> `SecureStore.AFTER_FIRST_UNLOCK_THIS_DEVICE_ONLY`: Similar to AFTER\_FIRST\_UNLOCK, except the entry is not migrated to a new device when restoring from a backup.
+> `SecureStore.AFTER_FIRST_UNLOCK_THIS_DEVICE_ONLY`: Similar to AFTER_FIRST_UNLOCK, except the entry is not migrated to a new device when restoring from a backup.
 
 > `SecureStore.ALWAYS_THIS_DEVICE_ONLY`: Similar to ALWAYS, except the entry is not migrated to a new device when restoring from a backup.
 
 #### Options for this module
 
 - `replacementCharacter : string`
- 
+
 Keys for Expo's [SecureStore](https://docs.expo.io/versions/latest/sdk/securestore/) only support `[A-Za-z0-9.-_]`, so all other characters will be replaced with this provided replacement character. If you don't provide any it will use `_` by default.
 
 - `replacer : function(key: string, replacementCharacter: string): string`
 
 If you want you can provide your own function to replace unsupported characters, meaning all time when you will want to save/get/remove items from the store this function will be executed.
 
-#### *You won't have to use functions below if using only for `redux-persist` storage, in that case redux will call these when needed*
+#### _You won't have to use functions below if using only for `redux-persist` storage, in that case redux will call these when needed_
 
 ### `store.setItem(key: string, value: string): Promise<void>`
 
 Saves the given value to store under the provided key.
 
 Returns a `Promise` wich will reject in case of errors. If you want to save object, or any type of data you will have to convert them to strings, and after reading them do the reversed actions.
- 
-*Like using `JSON.stringify` and `JSON.parse` for objects.*
+
+_Like using `JSON.stringify` and `JSON.parse` for objects._
 
 ### `getItem(key: string): Promise<string | null>`
 
-Retrieves the value saved under the provided key. 
+Retrieves the value saved under the provided key.
 
 Returns a `Promise` which will resolve with the saved value or null, or will reject in case of errors.
 
@@ -147,5 +149,3 @@ Returns a `Promise` wich will reject in case of errors.
 ## Note
 
 Inspired by [redux-persist-expo-securestore](https://github.com/Cretezy/redux-persist-expo-securestore) which saved data with Expo's SecureStore, that will be limited to 2KB per entry from SDK 35.
-
-
