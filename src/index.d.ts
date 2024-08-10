@@ -1,4 +1,4 @@
-declare module '-as/expo-unlimited-secure-store' {
+declare module '@hena-as/expo-unlimited-secure-store' {
   export interface Options {
     replacementCharacter?: string;
     replacer: (key: string, replacementCharacter: string) => string;
