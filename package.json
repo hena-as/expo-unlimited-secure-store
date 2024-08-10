@@ -1,22 +1,22 @@
 {
-  "name": "@neverdull-agency/expo-unlimited-secure-store",
+  "name": "@hena/expo-unlimited-secure-store",
   "version": "1.0.9",
   "description": "An 'unlimited' secure store engine for expo projects, also compatible with redux-persist. (Expo's SecureStore was limited to 2KB in SDK v33)",
   "main": "src/index.js",
   "types": "src/index.d.ts",
   "peerDependencies": {
-    "expo-file-system": "^5.0.1",
-    "expo-secure-store": "^5.0.1"
+    "expo-file-system": "^17.0.1",
+    "expo-secure-store": "^13.0.2"
   },
   "dependencies": {
-    "crypto-js": "^3.1.9-1"
+    "crypto-js": "^3.3.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/neverdull-agency/expo-unlimited-secure-store.git"
+    "url": "git+https://github.com/hena-as/expo-unlimited-secure-store.git"
   },
   "keywords": [
     "expo",
@@ -32,7 +32,7 @@
   "author": "Istvan Szilagyi <istvan@neverdull.nl>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/neverdull-agency/expo-unlimited-secure-store/issues"
+    "url": "https://github.com/hena-as/expo-unlimited-secure-store/issues"
   },
-  "homepage": "https://github.com/neverdull-agency/expo-unlimited-secure-store#readme"
+  "homepage": "https://github.com/hena-as/expo-unlimited-secure-store#readme"
 }
