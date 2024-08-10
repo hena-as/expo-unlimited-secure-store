@@ -1,5 +1,5 @@
 {
-  "name": "@hena/expo-unlimited-secure-store",
+  "name": "@hena-as/expo-unlimited-secure-store",
   "version": "1.0.9",
   "description": "An 'unlimited' secure store engine for expo projects, also compatible with redux-persist. (Expo's SecureStore was limited to 2KB in SDK v33)",
   "main": "src/index.js",
