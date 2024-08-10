@@ -9,7 +9,7 @@
     "expo-secure-store": "^13.0.2"
   },
   "dependencies": {
-    "crypto-js": "^3.3.0"
+    "crypto-js": "^4.2.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
